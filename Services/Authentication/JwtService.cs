@@ -1,9 +1,12 @@
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Agency.Interfaces.IJwtService;
+using Agency.Interfaces;
 using Agency.Models.DTOs;
 using Agency.Models.Entities.Jwt;
+
 
 namespace Agency.Services.Authentication.Jwt;
 
@@ -29,7 +32,6 @@ public sealed class JwtService : IJwtService
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                // new Claim(ClaimTypes.Role, user.Role)
             }),
             Expires = DateTime.UtcNow.AddMinutes(5),
             Issuer = _options.Issuer,

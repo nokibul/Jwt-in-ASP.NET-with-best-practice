@@ -1,3 +1,12 @@
+using System.Net.Cache;
+using System.Text;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection.Metadata.Ecma335;
 using Agency.Models.MyContext;
 using Microsoft.EntityFrameworkCore;
@@ -10,9 +19,11 @@ using Agency.Interfaces;
 using Agency.Models.Entities.Agency;
 using Agency.Models.MappingProfile;
 using AutoMapper;
+using System.Security.Claims;
 using Agency.Configuration.Jwt;
-using Agency.Services.Authentication.UserService;
-
+using Agency.Services.Authentication.User;
+using Agency.Interfaces;
+using Agency.Services.Authentication.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -24,19 +35,14 @@ builder.Services.AddDbContext<MyContext>(DbContextOptionsBuilder =>
 });
 
 var jwtOptionsSection = builder.Configuration.GetRequiredSection("JwtSettings");
-builder.Services.Configure<jwtOptionsSection>(jwtOptionsSection);
+builder.Services.Configure<JwtOptions>(jwtOptionsSection);
 
 // jwt auth configuration
-builser.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthentication = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(jwtOptions =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(jwtOptions =>
 {
     var configurationKey = jwtOptionsSection["Key"];
     var key = Encoding.UTF8.GetBytes(configurationKey);
-
+    jwtOptions.SaveToken = true;
     jwtOptions.TokenValidationParameters = new TokenValidationParameters
     {
         ValidIssuer = jwtOptionsSection["Issuer"],
@@ -59,7 +65,8 @@ builder.Services.AddScoped<IAgencyRepository, AgencyRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // service registration
-builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
 
 builder.Services.AddFluentValidation(conf =>
 {

@@ -23,6 +23,6 @@ public class AgencyEntity
     [Required]
     [EmailAddress]
     public string Email { get; set; }
-    public ICollection<MemberEntity> Users { get; set; }
+    public ICollection<MemberEntity> Members { get; set; }
     public string logo { get; set; }
 }

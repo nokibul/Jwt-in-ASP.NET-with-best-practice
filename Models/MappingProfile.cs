@@ -8,7 +8,9 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        // from, to
+        CreateMap<UserRegistrationDTO, MemberEntity>();
         CreateMap<CreateAgencyRequestDTO, AgencyEntity>();
-        CreateMap<UserDataDTO, MemberEntity>().ReverseMap();
+        CreateMap<MemberEntity, UserDataDTO>();
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Agency.Models.MyContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Agency.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20231030170832_removedRequiredAgencyInMember")]
+    partial class removedRequiredAgencyInMember
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +65,7 @@ namespace Agency.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)");
 
-                    b.Property<Guid?>("AgencyEntityId")
+                    b.Property<Guid>("AgencyId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("ContactNo")
@@ -116,7 +119,7 @@ namespace Agency.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AgencyEntityId");
+                    b.HasIndex("AgencyId");
 
                     b.ToTable("Members");
                 });
@@ -193,9 +196,13 @@ namespace Agency.Migrations
 
             modelBuilder.Entity("Agency.Models.Entities.Member.MemberEntity", b =>
                 {
-                    b.HasOne("Agency.Models.Entities.Agency.AgencyEntity", null)
+                    b.HasOne("Agency.Models.Entities.Agency.AgencyEntity", "Agency")
                         .WithMany("Members")
-                        .HasForeignKey("AgencyEntityId");
+                        .HasForeignKey("AgencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agency");
                 });
 
             modelBuilder.Entity("Agency.Models.Entities.MemberRole.MemberRoleEntity", b =>

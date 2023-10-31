@@ -14,7 +14,7 @@ public class MyContext : DbContext
     : base(options)
     { }
     public DbSet<AgencyEntity> Agencies { get; set; }
-    public DbSet<MemberEntity> Users { get; set; }
+    public DbSet<MemberEntity> Members { get; set; }
     public DbSet<MemberRoleEntity> MemberRoles { get; set; }
     public DbSet<RolePermissionEntity> RolePermissions { get; set; }
     public DbSet<PermissionEntity> Permissions { get; set; }
@@ -32,10 +32,10 @@ public class MyContext : DbContext
 
     public void ConfigureMemberEntity(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<MemberEntity>()
-                .HasOne(a => a.Agency)
-                .WithMany(b => b.Users)
-                .HasForeignKey(c => c.AgencyId);
+        // modelBuilder.Entity<MemberEntity>()
+        //         .HasOne(a => a.Agency)
+        //         .WithMany(b => b.Members)
+        //         .HasForeignKey(c => c.AgencyId);
 
     }
     public void ConfigureMemberRoleEntity(ModelBuilder modelBuilder)
@@ -50,7 +50,7 @@ public class MyContext : DbContext
 
         modelBuilder.Entity<MemberRoleEntity>()
             .HasOne(mr => mr.Role)
-            .WithMany(r => r.RoleUsers)
+            .WithMany(r => r.RoleMembers)
             .HasForeignKey(mr => mr.RoleId);
 
     }

@@ -1,18 +1,18 @@
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using AutoMapper;
 using Agency.Models.DTOs;
 using Agency.Models.Entities.Member;
 using Agency.Data.Repositories;
-using Agency.Utilities;
-using Agency.Services.Authentication.UserService;
+using Agency.Utilities.Auth;
+using Agency.Services.Authentication.User;
 using Agency.Interfaces;
 
-namespace Agency.Services.Authentication.UserService;
+namespace Agency.Services.Authentication.User;
 public sealed class UserService : IUserService
 {
-    private readonly UserRepository _repository;
+    private readonly IUserRepository _repository;
     private readonly IMapper _mapper;
-    public UserService(UserRepository repository, IMapper mapper)
+    public UserService(IUserRepository repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;
@@ -29,15 +29,15 @@ public sealed class UserService : IUserService
 
         var userData = _mapper.Map<UserDataDTO>(registeredUser);
 
-        return userEntity;
+        return userData;
     }
 
-    public UserDataDTO? GetUser(string? username)
-    {
-        ArgumentNullException.ThrowIfNull(username);
+    // public UserDataDTO? GetUser(string? username)
+    // {
+    //     ArgumentNullException.ThrowIfNull(username);
 
-        return _users.SingleOrDefault(u => u.Username == username);
-    }
+    //     return _users.SingleOrDefault(u => u.Username == username);
+    // }
 
     public bool IsAuthenticated(string? password, string? passwordHash)
     {
@@ -46,6 +46,7 @@ public sealed class UserService : IUserService
 
         return BCrypt.Net.BCrypt.Verify(password, passwordHash);
     }
+
 
 
 }

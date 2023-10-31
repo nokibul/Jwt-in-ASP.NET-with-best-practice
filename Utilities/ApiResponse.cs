@@ -1,4 +1,5 @@
 using Agency.Utilities.Error;
+
 namespace Agency.Utilities.Response;
 public class ApiResponse<T>
 {

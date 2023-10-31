@@ -1,11 +1,12 @@
-using BCrypt.Net;
+// using BCrypt.Net;
 
-namespace Agency.Utilities;
+namespace Agency.Utilities.Auth;
 public class AuthenticationUtil
 {
     public static string HashPassword(string password)
     {
-        string hashedPassword = HashPassword(password);
+        string salt = BCrypt.Net.BCrypt.GenerateSalt();
+        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
         return hashedPassword;
     }
 }

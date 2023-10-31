@@ -12,10 +12,8 @@ public class MemberEntity
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
 
-    [Required]
-    public Guid AgencyId { get; set; }
-    [Required]
-    public virtual AgencyEntity Agency { get; set; }
+    // public Guid AgencyId { get; set; }
+    // public virtual AgencyEntity Agency { get; set; }
 
     [StringLength(255)]
     public string FirstName { get; set; }

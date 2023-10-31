@@ -14,11 +14,11 @@ public class UserRepository : IUserRepository
     }
     public async Task<MemberEntity> GetUserById(Guid Id)
     {
-        return await _context.Users.FirstOrDefaultAsync(a => a.Id == Id);
+        return await _context.Members.FirstOrDefaultAsync(a => a.Id == Id);
     }
     public async Task<IEnumerable<MemberEntity>> GetAllAsync()
     {
-        return await _context.Users.ToListAsync();
+        return await _context.Members.ToListAsync();
     }
 
     public async Task<MemberEntity> AddAsync(MemberEntity user)
@@ -28,20 +28,20 @@ public class UserRepository : IUserRepository
             throw new ArgumentNullException(nameof(user));
         }
 
-        await _context.Users.AddAsync(user);
+        await _context.Members.AddAsync(user);
         await _context.SaveChangesAsync();
         return user;
     }
     public async Task UpdateAsync(MemberEntity user)
     {
-        await _context.Users.AddAsync(user);
+        await _context.Members.AddAsync(user);
     }
     public async Task DeleteAsync(Guid Id)
     {
         var user = await GetUserById(Id);
         if (user != null)
         {
-            _context.Users.Remove(user);
+            _context.Members.Remove(user);
             await _context.SaveChangesAsync();
         }
     }
