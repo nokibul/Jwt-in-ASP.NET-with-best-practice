@@ -13,7 +13,7 @@ public class AuthenticationController : ControllerBase
     public readonly IUserService _userService;
     public readonly IJwtService _jwtService;
 
-    public AuthenticationController(MyContext context, IUserService userService, IJwtService _jwtService)
+    public AuthenticationController(MyContext context, IUserService userService, IJwtService jwtService)
     {
         _context = context;
         _userService = userService;
@@ -42,7 +42,7 @@ public class AuthenticationController : ControllerBase
         // identify if the user exists or not
 
         //generate jwt token 
-        string jwtToken = _jwtService.GenerateToken()
+        string jwtToken = _jwtService.GenerateToken();
         // return it 
         return Ok(sampleResponse);
     }
