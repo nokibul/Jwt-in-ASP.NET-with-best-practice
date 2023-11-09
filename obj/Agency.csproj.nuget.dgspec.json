@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\Personal Projects\\Agency\\Agency.csproj": {}
+    "A:\\Personal Projects\\agency\\Agency.csproj": {}
   },
   "projects": {
-    "A:\\Personal Projects\\Agency\\Agency.csproj": {
+    "A:\\Personal Projects\\agency\\Agency.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Personal Projects\\Agency\\Agency.csproj",
+        "projectUniqueName": "A:\\Personal Projects\\agency\\Agency.csproj",
         "projectName": "Agency",
-        "projectPath": "A:\\Personal Projects\\Agency\\Agency.csproj",
+        "projectPath": "A:\\Personal Projects\\agency\\Agency.csproj",
         "packagesPath": "C:\\Users\\nokib\\.nuget\\packages\\",
-        "outputPath": "A:\\Personal Projects\\Agency\\obj\\",
+        "outputPath": "A:\\Personal Projects\\agency\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nokib\\AppData\\Roaming\\NuGet\\NuGet.Config",

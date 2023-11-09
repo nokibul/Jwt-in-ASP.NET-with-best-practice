@@ -46,3 +46,12 @@ A:\Personal Projects\Agency\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
 A:\Personal Projects\Agency\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
 A:\Personal Projects\Agency\bin\Debug\net7.0\AutoMapper.dll
 A:\Personal Projects\Agency\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\BCrypt.Net.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+A:\Personal Projects\agency\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FHw4kjEE1T2PzNv74Og4IwG/NAcss9tY8UZQMXQRsLuROxS9mIm7611TtTbgBSUhLzKFGTCjyJtMArrpNXlRUQ==",
+  "dgSpecHash": "o6ixndsbsspueGF2q0fyv+EZx6HxnRfQsRzSIaxTL6tdqwbRXgk9ZoC310fk5TZImgSapfX4M0Bc/XUkTcdJEQ==",
   "success": true,
-  "projectFilePath": "A:\\Personal Projects\\Agency\\Agency.csproj",
+  "projectFilePath": "A:\\Personal Projects\\agency\\Agency.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nokib\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\nokib\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
