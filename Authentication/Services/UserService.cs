@@ -1,10 +1,8 @@
-using Microsoft.Extensions.Options;
 using AutoMapper;
 using Agency.Authentication.DTOs;
 using Agency.Member.Entities;
 using Agency.Authentication.Utils;
 using Agency.Authentication.Interfaces;
-using Agency.Authentication.Services;
 using Agency.Member.Interfaces;
 
 namespace Agency.Authentication.Services;
