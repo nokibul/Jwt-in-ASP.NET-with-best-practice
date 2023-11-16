@@ -1,7 +1,5 @@
-using Agency.Member.Repositories;
-using Agency.Agency.Repositories;
-using Agency.Agency.Interfaces;
-using Agency.Member.Interfaces;
+using Agency.Authentication.Interfaces;
+using Agency.Authentication.Services;
 
 namespace Agency.Configuration.Service
 {
@@ -9,8 +7,8 @@ namespace Agency.Configuration.Service
     {
         public static void AddCustomService(this IServiceCollection services)
         {
-            services.AddScoped<IAgencyRepository, AgencyRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IJwtService, JwtService>();
         }
     }
 }

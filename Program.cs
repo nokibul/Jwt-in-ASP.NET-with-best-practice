@@ -4,6 +4,8 @@ using FluentValidation.AspNetCore;
 using Agency.Configuration.Jwt;
 using Agency.Configuration.Repository;
 using Agency.Configuration.Service;
+using Agency.Configuration.Swagger;
+
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -21,16 +23,17 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
-// repository registration
-builder.Services.AddCustomRepositories();
-
 // service registration
 builder.Services.AddCustomService();
+
+// repository registration
+builder.Services.AddCustomRepositories();
 
 builder.Services.AddFluentValidationAutoValidation();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddCustomSwagger();
 
 var app = builder.Build();
 

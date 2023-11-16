@@ -1,18 +1,14 @@
-using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Agency.Data.MyContext;
 using Agency.Authentication.DTOs;
 using Agency.Authentication.Interfaces;
 using Agency.Member.Interfaces;
-using Agency.Member.Repositories;
 using Agency.Member.Entities;
 
 [ApiController]
 [Route("api/auth")]
 public class AuthenticationController : ControllerBase
 {
-
     public readonly IUserRepository _userRepository;
     public readonly IUserService _userService;
     public readonly IJwtService _jwtService;
@@ -60,3 +56,4 @@ public class AuthenticationController : ControllerBase
     }
 
 }
+
