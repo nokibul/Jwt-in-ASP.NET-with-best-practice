@@ -1,5 +1,5 @@
 # agency
-Agency management application showcasing most used design patterns, best practices and conventions with clean code in asp.net
+JWT auth template including most used design patterns, best practices and conventions with Vertical Slice Architecture in asp.net
 
 Design Patterns used:
 1. Repository pattern
